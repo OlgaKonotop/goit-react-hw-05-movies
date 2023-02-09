@@ -24,7 +24,14 @@ export const fetchSearchFilms = async (query = 'cat') => {
   );
   return response.data;
 };
-// export const fetchSearchFilms = async (query = 'batman') => {
+export const fetchFilmsCard = async movieId => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`
+  );
+  return response.data;
+};
+
+// export const fetchFilms = async query => {
 //   const response = await axios.get(
 //     'https://api.themoviedb.org/3/search/movie',
 //     {
@@ -38,18 +45,3 @@ export const fetchSearchFilms = async (query = 'cat') => {
 //   );
 //   return response.data;
 // };
-
-export const fetchFilms = async query => {
-  const response = await axios.get(
-    'https://api.themoviedb.org/3/search/movie',
-    {
-      params: {
-        api_key: 'cd08058c291f007122df115265286adb',
-        page: 1,
-        language: 'en-US',
-        query: `${query}`,
-      },
-    }
-  );
-  return response.data;
-};

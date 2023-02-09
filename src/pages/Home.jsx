@@ -1,5 +1,6 @@
+import HomeList from 'components/HomeList/HomeList';
 import { useState, useEffect } from 'react';
-//import { Link } from 'react-router-dom';
+
 import { fetchPopularyFilms } from '../components/services/API';
 
 const Home = () => {
@@ -27,13 +28,9 @@ const Home = () => {
   return (
     <main>
       <h1>Trending today</h1>
-      <ul>
-        {gallery.map(item => (
-          <li key={item.id}>
-            <a href="1">{item.title}</a>
-          </li>
-        ))}
-      </ul>
+      <ul></ul>
+      <HomeList gallery={gallery} />
+      {/* <FilmCard /> */}
     </main>
   );
 };

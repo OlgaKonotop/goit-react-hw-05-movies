@@ -5,14 +5,16 @@ import { lazy } from 'react';
 
 const Home = lazy(() => import('../pages/Home'));
 const Movies = lazy(() => import('../pages/Movies'));
+const MovieCard = lazy(() => import('../pages/MovieCard'));
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
-        {/* <Route path="about" element={<About />} /> */}
         <Route path="movies" element={<Movies />} />
+        <Route path="movies/:movieId" element={<MovieCard />} />
+        <Route path="*" element={<Home />} />
       </Route>
     </Routes>
   );
