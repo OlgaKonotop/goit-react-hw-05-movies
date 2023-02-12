@@ -19,7 +19,7 @@ const MovieCard = () => {
   const [film, setFilm] = useState();
   const [error, setError] = useState(null);
   const location = useLocation();
-  const backLinkHref = location.state.from ?? '/';
+  const backLinkHref = location.state.from ?? '/movies';
 
   // console.log('card');
   // console.log(movieId);
