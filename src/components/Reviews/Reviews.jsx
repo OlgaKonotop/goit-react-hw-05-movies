@@ -2,6 +2,8 @@ import { fetchReviewsFilms } from 'components/services/API';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+
 import ReviewsItem from 'components/ReviewsItem/ReviewsItem';
 
 const Reviews = () => {
@@ -51,3 +53,7 @@ const Reviews = () => {
 };
 
 export default Reviews;
+
+Reviews.propTypes = {
+  gallery: PropTypes.arrayOf().isRequired,
+};

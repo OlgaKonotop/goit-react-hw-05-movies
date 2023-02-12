@@ -1,7 +1,9 @@
+import PropTypes from 'prop-types';
+
 import HomeList from 'components/HomeList/HomeList';
 import { useState, useEffect } from 'react';
 
-import { fetchPopularyFilms } from '../components/services/API';
+import { fetchPopularyFilms } from 'components/services/API';
 
 const Home = () => {
   console.log('home');
@@ -36,3 +38,7 @@ const Home = () => {
 };
 
 export default Home;
+
+Home.propTypes = {
+  gallery: PropTypes.arrayOf().isRequired,
+};

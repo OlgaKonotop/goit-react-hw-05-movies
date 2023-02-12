@@ -1,6 +1,18 @@
 import { fetchFilmsCard } from 'components/services/API';
 import { useState, useEffect, Suspense } from 'react';
 import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
+import {
+  Main,
+  Box,
+  BoxCard,
+  LinkBtn,
+  Title,
+  Text,
+  TitleCategory,
+  AdittionalBlock,
+  TitleAdittional,
+  ItemAdittional,
+} from './MovieCard.styled';
 
 const MovieCard = () => {
   const { movieId } = useParams({});
@@ -35,38 +47,42 @@ const MovieCard = () => {
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : 'https://www.pngall.com/wp-content/uploads/7/Gallery-PNG-Free-Download.png';
 
-  const voteAverage = vote_average * 10;
+  const voteAverage = Math.round(vote_average * 10);
   const genresFilm = genres.map(genre => genre.name).join(' ');
   return (
     film && (
-      <main>
-        {/* <button>Go back</button> */}
-        <Link to={backLinkHref}>Go Back</Link>
-        <img src={poster} alt="11" width="240"></img>
-        <h1>{original_title}</h1>
-        <p>User Score: {voteAverage}%</p>
-        <h3>Overviev</h3>
-        <p>{overview}</p>
-        <h3>Genres</h3>
-        <p> {genresFilm}</p>
-
-        <h2>Adittional international</h2>
-        <ul>
-          <li>
-            <Link to="cast" state={{ from: backLinkHref }}>
-              Cast
-            </Link>
-          </li>
-          <li>
-            <Link to="reviews" state={{ from: backLinkHref }}>
-              Reviews
-            </Link>
-          </li>
-        </ul>
+      <Main>
+        <LinkBtn to={backLinkHref}>Go Back</LinkBtn>
+        <Box>
+          <img src={poster} alt="11" width="240"></img>
+          <BoxCard>
+            <Title>{original_title}</Title>
+            <Text>User Score: {voteAverage}%</Text>
+            {overview && <TitleCategory>Overviev</TitleCategory>}
+            <Text>{overview}</Text>
+            {genresFilm && <TitleCategory>Genres</TitleCategory>}
+            <Text> {genresFilm}</Text>
+          </BoxCard>
+        </Box>
+        <AdittionalBlock>
+          <TitleAdittional>Adittional international</TitleAdittional>
+          <ul>
+            <ItemAdittional>
+              <Link to="cast" state={{ from: backLinkHref }}>
+                Cast
+              </Link>
+            </ItemAdittional>
+            <ItemAdittional>
+              <Link to="reviews" state={{ from: backLinkHref }}>
+                Reviews
+              </Link>
+            </ItemAdittional>
+          </ul>
+        </AdittionalBlock>
         <Suspense fallback={<div>Loading subpage...</div>}>
           <Outlet />
         </Suspense>
-      </main>
+      </Main>
     )
   );
 };

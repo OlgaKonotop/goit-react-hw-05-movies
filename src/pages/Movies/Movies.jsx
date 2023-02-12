@@ -1,8 +1,10 @@
+import PropTypes from 'prop-types';
+
 import MovieList from 'components/MoviesList/MoviesList';
 import { SearchBox } from 'components/SearchBox/SearchBox';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { fetchSearchFilms } from '../components/services/API';
+import { fetchSearchFilms } from 'components/services/API';
 
 const Movies = () => {
   const [searchParams] = useSearchParams();
@@ -51,3 +53,7 @@ const Movies = () => {
 };
 
 export default Movies;
+
+Movies.propTypes = {
+  gallery: PropTypes.arrayOf().isRequired,
+};

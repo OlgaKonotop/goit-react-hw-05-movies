@@ -1,18 +1,21 @@
+import { List, ImgCast, TitleCast, ItemCast } from './CastItem.styled';
+
 const CastItem = ({ cast }) => {
   return (
-    <>
-      {cast.map(item => (
-        <li key={item.id}>
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${item.profile_path}`}
-            alt={item.name}
-            width="100"
-          />
-          <h4>{item.name}</h4>
-          <p>Character: {item.character}</p>
-        </li>
-      ))}
-    </>
+    <List>
+      {cast.map(item => {
+        const photo = item.profile_path
+          ? `https://image.tmdb.org/t/p/w500/${item.profile_path}`
+          : 'https://st2.depositphotos.com/1898481/5240/i/600/depositphotos_52406655-stock-photo-unknown-person.jpg';
+        return (
+          <ItemCast key={item.id}>
+            <ImgCast src={photo} alt={item.name} width="100" />
+            <TitleCast>{item.name}</TitleCast>
+            {item.character && <p>Character: {item.character}</p>}
+          </ItemCast>
+        );
+      })}
+    </List>
   );
 };
 

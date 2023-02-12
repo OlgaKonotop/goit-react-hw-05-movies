@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { fetchCastFilms } from 'components/services/API';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -17,13 +19,11 @@ const Cast = () => {
         if (!movieId) {
           return;
         }
-        // console.log(movieId);
+
         const castFilm = await fetchCastFilms(movieId);
         setError(null);
 
         setCast(castFilm.cast);
-
-        // console.log(castFilm);
       } catch {
         setError('Error 😒. Please reload page 👍');
       } finally {
@@ -46,3 +46,7 @@ const Cast = () => {
 };
 
 export default Cast;
+
+Cast.propTypes = {
+  gallery: PropTypes.arrayOf().isRequired,
+};

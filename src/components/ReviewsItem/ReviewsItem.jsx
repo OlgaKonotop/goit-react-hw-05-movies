@@ -1,14 +1,15 @@
+import { ItemReview, List, AuthorReview } from './ReviewItem.styled';
+
 const ReviewsItem = ({ reviews }) => {
   return (
-    <>
+    <List>
       {reviews.map(item => (
-        <li key={item.id}>
-          <b> Author: {item.author}</b>
-          {/* <h4>Author: {item.author}</h4> */}
+        <ItemReview key={item.id}>
+          <AuthorReview> Author: {item.author}</AuthorReview>
           <p>{item.content}</p>
-        </li>
+        </ItemReview>
       ))}
-    </>
+    </List>
   );
 };
 
