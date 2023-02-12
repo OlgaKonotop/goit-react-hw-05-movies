@@ -4,6 +4,7 @@ import HomeList from 'components/HomeList/HomeList';
 import { useState, useEffect } from 'react';
 
 import { fetchPopularyFilms } from 'components/services/API';
+import { TitleHome } from './Home.styled';
 
 const Home = () => {
   console.log('home');
@@ -29,7 +30,7 @@ const Home = () => {
   console.log(error);
   return (
     <main>
-      <h1>Trending today</h1>
+      <TitleHome>Trending today</TitleHome>
       <ul></ul>
       <HomeList gallery={gallery} />
       {/* <FilmCard /> */}
