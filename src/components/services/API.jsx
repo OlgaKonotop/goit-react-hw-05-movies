@@ -31,17 +31,16 @@ export const fetchFilmsCard = async movieId => {
   return response.data;
 };
 
-// export const fetchFilms = async query => {
-//   const response = await axios.get(
-//     'https://api.themoviedb.org/3/search/movie',
-//     {
-//       params: {
-//         api_key: 'cd08058c291f007122df115265286adb',
-//         page: 1,
-//         language: 'en-US',
-//         query: `${query}`,
-//       },
-//     }
-//   );
-//   return response.data;
-// };
+export const fetchCastFilms = async movieId => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`
+  );
+  return response.data;
+};
+
+export const fetchReviewsFilms = async (movieId = 255) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${API_KEY}&page=1`
+  );
+  return response.data;
+};
